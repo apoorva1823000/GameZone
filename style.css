@@ -204,11 +204,11 @@ nav ul{
 .clockInternal{
   position: relative;
   background: #2f363e;
-  box-shadow: 25px 25px 75px rgba(0,0,0,0.75),
-  0px 10px 70px rgba(0,0,0,0.25),
-  inset 5px 5px 10px rgba(0,0,0,0.5),
-  inset 5px 5px 20px rgba(0,0,0,0.2),
-  inset -5px -5px 15px rgba(0,0,0,0.75);
+  box-shadow: 25px 25px 75px rgba(10,0,0,0.75),
+  0px 10px 70px rgba(20,0,0,0.25),
+  inset 5px 5px 10px rgba(0,30,0,0.5),
+  inset 5px 5px 20px rgba(0,0,40,0.2),
+  inset -5px -5px 15px rgba(0,0,50,0.75);
   border-radius: 20px;
   border-top-left-radius: 180px;
   border-top-right-radius: 180px;
@@ -404,6 +404,9 @@ nav ul{
   position: relative;
   transform: translateY(200px);
   font-size: 1.2em;
+  background: rgb(11, 11, 11);
+  border-radius: 20px;
+  padding:10px;
   text-shadow: 1.8px 1.8px 5px rgb(221, 0, 255);
   margin: 10px;
   text-align: center;
@@ -414,11 +417,97 @@ nav ul{
   justify-content: space-around;
   align-items: center;
   position: relative;
-  margin: 20px;
-  background: black;
   transform: translateY(150px);
-  margin-top: 80px;
+  margin-top: 40px;
   padding: 10px;
+}
+.cubeInternal{
+  position: relative;
+  top: -80px;
+  transform: skewY(-20deg) translateY(200px);
+  animation: animateCube 5s linear infinite;
+}
+@keyframes animateCube {
+  0%,100%{
+    filter: hue-rotate(0deg);
+  }
+  50%{
+    filter: hue-rotate(360deg);
+  }
+}
+.cubeInternal .cube{
+  position: relative;
+  z-index: 2;
+}
+.cubeInternal .cube:nth-child(2){
+  z-index: 1;
+  translate: -60px -60px;
+}
+.cubeInternal .cube:nth-child(3){
+  z-index: 3;
+  translate: 60px 60px;
+}
+.cubeInternal .cube div{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+  translate: calc(-70px*var(--x)) calc(-60px*var(--y));
+
+}
+.cubeInternal .cube div span{
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #93dcf9;
+  z-index: calc(1*var(--i));
+  transition: 1.5s;
+}
+.cubeInternal .cube div span:hover{
+  transition:0s;
+  background: #ef4149;
+  filter: drop-shadow(0 0 30px #ef4149);
+}
+.cubeInternal .cube div span::before{
+  content: '';
+  position: absolute;
+  left: -40px;
+  width: 40px;
+  height: 100%;
+  background:#ffabab;
+  transform-origin: right;
+  transform: skewY(45deg);
+}
+.cubeInternal .cube div span:hover::before{
+  transition: 0s;
+  background: #f75d64;
+}
+.cubeInternal .cube div span::after{
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #2e3133;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+}
+.cubeInternal .cube div span:hover::after{
+  transition: 0s;
+  background: #f14e55;
+}
+.cubeDescription{
+  position: relative;
+  transform: translateY(400px);
+  background: rgba(11, 11, 11);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  text-shadow: 1.8px 1.8px 5px rgb(0, 81, 255);
+  margin: 10px;
+  text-align: center;
 }
 /* Gradient Scroll Bar */
 
